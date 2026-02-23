@@ -44,3 +44,25 @@ pub fn draw_status_display<D>(display: &mut D, state: &DisplayState)
 		.draw(display)
 		.unwrap();
 }
+
+#[cfg(feature = "simulated_data")]
+pub mod simulator {
+	use chrono::Local;
+	use crate::display::DisplayState;
+
+	#[derive(Default)]
+	pub struct StateSimulator {
+		rng: fastrand::Rng,
+	}
+
+	impl StateSimulator {
+		pub fn gen_next(&mut self) -> DisplayState {
+			DisplayState {
+				time: Local::now().naive_local().time(),
+				lat: self.rng.f64() * 60.0,
+				lon: self.rng.f64() * 60.0,
+				sats: self.rng.u8(0..99),
+			}
+		}
+	}
+}
