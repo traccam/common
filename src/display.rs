@@ -14,10 +14,10 @@ use embedded_graphics::mono_font::MonoTextStyleBuilder;
 
 #[derive(Clone, Default)]
 pub struct DisplayState {
-	time: NaiveTime,
-	lat: f64,
-	lon: f64,
-	sats: u8,
+	pub time: NaiveTime,
+	pub lat: f64,
+	pub lon: f64,
+	pub sats: u8,
 }
 
 pub fn draw_status_display<D>(display: &mut D, state: &DisplayState)
