@@ -33,14 +33,14 @@ pub fn draw_status_display<D>(display: &mut D, state: &DisplayState)
 	display.clear(BinaryColor::Off).unwrap();
 
 	Text::with_baseline(&heapless::format!(15; "{} {}", state.time, state.sats).unwrap(), Point::zero(), TXT_STYLE, Baseline::Top)
-		.draw(&mut display)
+		.draw(display)
 		.unwrap();
 
 	Text::with_baseline(&heapless::format!(10; "N{:.5}", state.lat).unwrap(), Point::new(0, 9), TXT_STYLE, Baseline::Top)
-		.draw(&mut display)
+		.draw(display)
 		.unwrap();
 
 	Text::with_baseline(&heapless::format!(10; "E{:.5}", state.lon).unwrap(), Point::new(0, 18), TXT_STYLE, Baseline::Top)
-		.draw(&mut display)
+		.draw(display)
 		.unwrap();
 }
