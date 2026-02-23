@@ -20,7 +20,7 @@ pub struct DisplayState {
 	sats: u8,
 }
 
-pub fn draw_status_display<D>(mut display: D, state: &DisplayState)
+pub fn draw_status_display<D>(display: &mut D, state: &DisplayState)
 	where
 	D: DrawTarget<Color = BinaryColor>,
 	D::Error: Debug
