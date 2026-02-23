@@ -32,7 +32,7 @@ pub fn draw_status_display<D>(display: &mut D, state: &DisplayState)
 
 	display.clear(BinaryColor::Off).unwrap();
 
-	Text::with_baseline(&heapless::format!(15; "{} {}", state.time, state.sats).unwrap(), Point::zero(), TXT_STYLE, Baseline::Top)
+	Text::with_baseline(&heapless::format!(20; "{} {}", state.time, state.sats).unwrap(), Point::zero(), TXT_STYLE, Baseline::Top)
 		.draw(display)
 		.unwrap();
 
