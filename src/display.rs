@@ -7,7 +7,7 @@ use embedded_graphics::text::Text;
 use embedded_graphics::pixelcolor::BinaryColor;
 use embedded_graphics::mono_font::ascii::FONT_6X10;
 use embedded_graphics::prelude::DrawTarget;
-use chrono::NaiveTime;
+use chrono::{NaiveTime, Timelike};
 use embedded_graphics::Drawable;
 use embedded_graphics::mono_font::MonoTextStyleBuilder;
 
@@ -32,7 +32,7 @@ pub fn draw_status_display<D>(display: &mut D, state: &DisplayState)
 
 	display.clear(BinaryColor::Off).unwrap();
 
-	Text::with_baseline(&heapless::format!(30; "{} {}", state.time, state.sats).unwrap(), Point::zero(), TXT_STYLE, Baseline::Top)
+	Text::with_baseline(&heapless::format!(30; "{:02}:{:02}:{:02} Sats: {}", state.time.hour(), state.time.minute(), state.time.second(),  state.sats).unwrap(), Point::zero(), TXT_STYLE, Baseline::Top)
 		.draw(display)
 		.unwrap();
 
