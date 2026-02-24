@@ -3,7 +3,7 @@
 use chrono::{FixedOffset, NaiveDate, NaiveTime};
 
 pub mod display;
-mod time;
+pub mod time;
 
 #[derive(Clone, Default)]
 pub struct DisplayState {
